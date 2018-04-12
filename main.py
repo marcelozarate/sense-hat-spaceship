@@ -27,6 +27,11 @@ def asteroids_fall():
         asteroids.insert(0,[randint(0,7),0])
     
     for a in asteroids:
+        # Hitting an asteroid
+        if ((a[0] ==x ) & (a[1]==7)):
+          return False
+        # Brown
+        sense.set_pixel(a[0], a[1], 210, 105, 30)
     	# Asteroid out of screen
         if a[1]==7:
           asteroids.pop()
@@ -34,12 +39,7 @@ def asteroids_fall():
         # Asteroid moving down
         else:
           a[1] += 1
-        # Hitting an asteroid
-        if ((a[0] ==x ) & (a[1]==7)):
-          return False
-        # Brown
-        sense.set_pixel(a[0], a[1], 210, 105, 30)
-    
+
     loops += 1
     return True
 
@@ -61,4 +61,4 @@ while asteroids_fall():
     sleep(0.5)
     sense.clear(0, 0, 0)
     
-sense.show_message("Game Over. Score: "+str(score), text_colour=(255, 99, 71))
+sense.show_message("Game Over - Score: "+str(score), text_colour=(255, 99, 71))
